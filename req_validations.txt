@@ -1,0 +1,596 @@
+		//Check if Degree program has been selected
+		if($('#degree_select option:selected').val()==-1){
+
+		    alert_value+=alert_count+".) Please select your respective Degree Program.\n\n";
+		    alert_count++;
+		    $('label[for=degree_select]').css({color:'red'});
+		    flag="false";
+
+		}
+		else{
+
+			$('label[for=degree_select]').css({color:'#333333'});
+
+		}
+
+
+
+
+
+		//To check the academic year
+
+		//if($('#academic_year_fall').val()==='')
+		//{
+		//	alert_value+=alert_count+".) Please enter Academic Year.\n\n";
+		//	alert_count++;
+		//	$('label[for=academic_year_fall]').css({color:'red'});
+		//	flag="false";
+		//}
+		//else if($('#academic_year_fall').val()!='') 
+		//{
+		//	$('label[for=academic_year_fall]').css({color:'#333333'});
+		//}
+
+		//To check the First Name
+		if($('#first_name').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter First Name\n\n";
+			alert_count++;
+			$('label[for=first_name]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+		
+		       	 regex=/^[a-z]+$|^[A-Z]+$|^[A-Z]{1}[a-z]+$/
+			 if(!regex.test(First_name))
+			{
+			alert_value+=alert_count+".)Please enter the Name in Proper Format(All caps OR All small OR First letter caps and remaining small)\n\n";
+			alert_count++;
+			$('label[for=first_name]').css({color:'red'});
+			flag="false";
+			}
+		}
+
+		if($('#first_name').val()!='')
+		{
+			regex=/^[a-z]+$|^[A-Z]+$|^[A-Z]{1}[a-z]+$/
+			if(regex.test(First_name))
+			{
+				$('label[for=first_name]').css({color:'#333333'});
+			}
+		}	
+
+
+		//To check the Last Name of the student
+		if($('#second_name').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter Last Name\n\n";
+			alert_count++;
+			$('label[for=second_name]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+		
+			regex=/^[a-z]+$|^[A-Z]+$|^[A-Z]{1}[a-z]+$/
+			 if(!regex.test(Second_name))
+			{
+			alert_value+=alert_count+".)Please enter the Name in Proper Format(All caps OR All small OR First letter caps and remaining small)\n\n";
+			alert_count++;
+			$('label[for=second_name]').css({color:'red'});
+			flag="false";
+			}
+		}
+		if($('#second_name').val()!='')
+		{
+			regex=/^[a-z]+$|^[A-Z]+$|^[A-Z]{1}[a-z]+$/
+			if(regex.test(Second_name))
+			{
+				$('label[for=second_name]').css({color:'#333333'});
+			}
+		} 
+		//To check the ASU ID of the student
+		if($('#asu_id').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter ASU ID\n\n";
+			alert_count++;
+			$('label[for=asu_id]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+	
+			regex=/^[0-9]{10,11}$/
+			 if(!regex.test(Asu_id))
+			{
+			alert_value+=alert_count+".)Please enter the correct ASU-ID Number containing only numbers and ID being of 10 or 11 digits.\n\n";
+			alert_count++;
+			$('label[for=asu_id]').css({color:'red'});
+			flag="false";
+			       // errors+=("Please enter correct ASU ID");
+				//success = false;
+			}
+		}
+		if($('#asu_id').val()!='')
+		{
+			regex=/^[0-9]{10,11}$/
+			if(regex.test(Asu_id))
+			{
+				$('label[for=asu_id]').css({color:'#333333'});
+			}
+		} 
+
+		//To check if student has entered the ASURITE ID and has entered it correctly.
+		if($('#student_mail').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter ASU E-Mail ID\n\n";
+			alert_count++;
+			$('label[for=student_mail]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+		
+			regex=/^[a-z][a-z0-9]+?@asu.edu$/
+			 if(!regex.test(Student_mail))
+			{
+			alert_value+=alert_count+".)Please enter correct ASURITE ID (All small)\n\n";
+			alert_count++;
+			$('label[for=student_mail]').css({color:'red'});
+			flag="false";
+			}
+		}
+		if($('#student_mail').val()!='')
+		{
+			regex=/^[a-z][a-z0-9]+?@asu.edu$/
+			if(regex.test(Student_mail))
+			{
+				$('label[for=student_mail]').css({color:'#333333'});
+			}
+		} 
+
+		//to check the Program Start Date.
+		if($('#prog_start_date').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter Program Start Date\n\n";
+			alert_count++;
+			$('label[for=prog_start_date]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=prog_start_date]').css({color:'#333333'});
+		}
+
+
+		//TO check is the Semester in progress has been entered correctly.
+		if($('#sem_in_prog option:selected').val()==-1)
+		{
+			alert_value+=alert_count+".) Please enter Semester in Progress\n\n";
+			alert_count++;
+			$('label[for=sem_in_prog]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=sem_in_prog]').css({color:'#333333'});
+		}
+
+		//To check the cumulative GPA.
+		if($('#cum_gpa').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter CGPA\n\n";
+			alert_count++;
+			$('label[for=cum_gpa]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			regex=/^[0-3](\.[0-9]{1,9})?$|^4(\.?([0-2][0-9]?|3[0-3]?))$|^4$/
+		       if(!regex.test(Cum_gpa))
+			{
+				alert_value+=alert_count+".)Please enter CGPA <4.33\n\n";
+				alert_count++;
+				$('label[for=cum_gpa]').css({color:'red'});
+				flag="false";
+			}
+		}
+		if($('#cum_gpa').val()!='')
+		{
+			regex=/^[0-3](\.[0-9]{1,9})?$|^4(\.?([0-2][0-9]?|3[0-3]?))$|^4$/
+			if(regex.test(Cum_gpa))
+			{
+				$('label[for=cum_gpa]').css({color:'#333333'});
+			}
+		} 
+
+		$.each($('#coursegrade_table_body tr'),function(i,tr){
+		    if($('.coursegrade'+i).find('.course').val()==='')
+		    {
+			 alert_value+=alert_count+".) Please enter Courses\n\n";
+			    alert_count++;
+			    $('label[for=course]').css({color:'red'});
+			    flag="false";
+		    }
+		    else
+		    {
+			$('label[for=course]').css({color:'#333333'});
+		    }
+		});
+
+		//will need tis logic for everything
+		$.each($('#coursegrade_table_body tr'),function(i,tr){
+
+
+
+			if($('.coursegrade'+i).find('.grade option:selected').val()==-1)
+			{
+				 alert_value+=alert_count+".) Please enter Grades\n\n";
+				alert_count++;
+				$('label[for=grade]').css({color:'red'});
+				flag="false";
+			}
+			else
+			{
+				$('label[for=grade]').css({color:'#333333'});
+			}
+		});
+
+
+		//Radio button Check to see if the Advisor Commitee has been formed.
+		if(!$("input:radio[class='advisory_committee']").is(":checked"))
+		{
+			alert_value+=alert_count+".) Please check if Advisory Committee has been formed\n\n";
+			alert_count++;
+			$('label[for=advisory_committee]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=advisory_committee]').css({color:'#333333'});
+		}
+
+
+
+		//This is to check if the advisor column are succesfully filled on clicking yes.
+
+		if($("input:radio[id='advisory_committee_yes']").is(":checked"))
+		{
+			$.each($('#advisor_table_body tr'),function(i,tr){
+
+			if($('.signature'+i).find('.advisor_mail').val()===""){
+
+				alert_value+=alert_count+".) Please enter the Advisor's Mail \n\n";
+				alert_count++;
+				$('label[for=advisor_mail]').css({color:'red'});
+				flag="false";
+
+			}
+			else
+			{
+				$('label[for=advisor_mail]').css({color:'#333333'});
+			}
+
+
+		//var regex=/^[A-Z,a-z,0-9]*@[a-z,A-Z]{2,}.[a-z,A-Z]{2,}$/;
+		//var mail_check=$('.signature'+i).find('.advisor_mail').val();
+		//	if(!regex.test(mail_check)){
+
+
+		//                alert_value+=alert_count+".) Please enter the Advisor's Mail in the for example@aaa.bbb \n\n";
+		//                alert_count++;
+		//                $('label[for=advisor_mail]').css({color:'red'});
+		//                flag="false";
+
+		//        }
+		//        else
+		//        {
+		//                $('label[for=advisor_mail]').css({color:'#333333'});
+		//        }
+
+
+			if($('.signature'+i).find('.advisor_firstname').val()===""){
+
+				alert_value+=alert_count+".) Please enter the Advisor's First Name \n\n";
+				alert_count++;
+				$('label[for=advisor_firstname').css({color:'red'});
+				flag="false";
+			}
+			else
+			{
+				$('label[for=advisor_firstname]').css({color:'#333333'});
+			}
+			if($('.signature'+i).find('.advisor_secondname').val()===""){
+
+			alert_value+=alert_count+".) Please enter the Advisor's Second Name \n\n";
+			alert_count++;
+			$('label[for=advisor_secondname]').css({color:'red'});
+			flag="false";
+			}
+			else
+			{
+				$('label[for=advisor_secondname]').css({color:'#333333'});
+			}
+
+
+
+			});
+		}
+
+
+		//To check is radio button if have met advisor
+		if(!$("input:radio[class='met_advisor']").is(":checked"))//dependency 
+		{
+			alert_value+=alert_count+".) Please check if You have met advisor\n\n";
+			alert_count++;
+			$('label[for=advisor]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=advisor]').css({color:'#333333'});
+		}
+
+		//To check if the Textbox for reason of not meeting the Chair has been mentioned if selected No.
+		if($("input:radio[class='met_advisor']:checked").val()==="0" && $("#chair_notmet_reason").val()==='' )
+		{
+			alert_value+=alert_count+".) Please mention the reason for not having met the advisor\n\n";
+			alert_count++;
+			$('label[for=chair_notmet_reason]').css({color:'red'});
+			flag="false";
+
+		}
+		else
+		{
+			$('label[for=chair_notmet_reason]').css({color:'#333333'});
+		}
+
+
+
+
+		//This is for qualifying exam 
+
+		if(!$("input:radio[class='qualifying_exam']").is(":checked"))
+		{
+			alert_value+=alert_count+".) Please check Qualfying Exam has been given\n\n";
+			alert_count++;
+			$('label[for=qualifying_exam]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=qualifying_exam]').css({color:'#333333'});
+		}
+
+
+		//Qualifying Exam details Course Validation
+		$.each($('#qualifying_table_body'+token+' tr'),function(i,tr){
+		    if($('.qualifyingexam'+token+'-'+i).find('.qualifying_details option:selected').val()=="")
+		    {
+			 alert_value+=alert_count+".) Please enter Qualifying Exams\n\n";
+			    alert_count++;
+			    $('label[for=qualifying_details]').css({color:'red'});
+			    flag="false";
+		    }
+		    else
+		    {
+			$('label[for=qualifying_details]').css({color:'#333333'});
+		    }
+		});
+
+		//Qualifying Exam details Grade Validation
+		$.each($('#qualifying_table_body'+token+' tr'),function(i,tr){
+		    if($('.qualifyingexam'+token+'-'+i).find('.qualifying_grades option:selected').val()==-1)
+		    {
+			 alert_value+=alert_count+".) Please enter Grades for Qualifying Exams\n\n";
+			    alert_count++;
+			    $('label[for=qualifying_grades]').css({color:'red'});
+			    flag="false";
+		    }
+		    else
+		    {
+			$('label[for=qualifying_grades]').css({color:'#333333'});
+		    }
+		});
+
+		//To check if written comprehensive has been Completed
+
+		if(!$("input:radio[name='comprehensive_exam']").is(":checked"))
+		{
+			alert_value+=alert_count+".) Please check if Written Comprehensive Exam has been Selected\n\n";
+			alert_count++;
+			$('label[for=comprehensive_exam]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=comprehensive_exam]').css({color:'#333333'});
+		}
+
+		//written comprehensive details need to be added similar to grade and course
+
+		if($("input:radio[id='comprehensive_exam_yes']").is(":checked")){
+
+		    $.each($('#written_table_body tr'),function(i,tr){
+			if($('.writtenexam'+i).find('.written_comprehensive').val()==='')
+			{
+			     alert_value+=alert_count+".) Please enter Written comprehensive Exams\n\n";
+				alert_count++;
+				$('label[for=written_comprehensive]').css({color:'red'});
+				flag="false";
+			}
+			else
+			{
+			    $('label[for=written_comprehensive]').css({color:'#333333'});
+			}
+		    });
+
+		}
+
+
+
+		//will need tis logic for everything
+		//$.each($('#written_table_body tr'),function(i,tr){
+
+		//        if($('.writtenexam'+i).find('.written_grades option:selected').val()==-1)
+		//        {
+		//                 alert_value+=alert_count+".) Please enter Grades for Written Comprehensive\n\n";
+		//                alert_count++;
+		//                $('label[for=written_grades]').css({color:'red'});
+		//                flag="false";
+		//        }
+		//        else
+		//        {
+		//                $('label[for=written_grades]').css({color:'#333333'});
+		//        }
+		//});
+
+		//Validation Oral comprehensive
+		if(!$("input:radio[id='oral_comprehensive_exam']").is(":checked"))
+		{
+			alert_value+=alert_count+".) Please check if Oral Comprehensive Completed\n\n";
+			alert_count++;
+		    $('label[for=oral_comprehensive_exam]').css({color:'red'});
+		    flag="false";
+		}
+		else
+		{
+			$('label[for=oral_comprehensive_exam]').css({color:'#333333'});
+		}
+
+
+
+		if(!$("input:radio[class='colloquium']").is(":checked"))
+		{
+			alert_value+=alert_count+".) Please check Colloquium Lectures attended\n\n";
+			alert_count++;
+		    $('label[for=colloquium]').css({color:'red'});
+		    flag="false";
+		}
+		else
+		{
+			$('label[for=colloquium]').css({color:'#333333'});
+		}
+
+		//This will need changes.
+
+		if($("input:radio[id='colloquium_yes']").is(":checked") && !$("input:checkbox[id='colloquium_reason']").is(":checked"))
+		{
+			alert_value+=alert_count+".) Please Enter the number of colloquium lectures attended\n\n";
+			alert_count++;
+			$('label[for=colloquium_reason]').css({color:'red'});
+			flag="false";
+
+		}
+		else
+		{
+			$('label[for=colloquium_reason]').css({color:'#333333'});
+		}
+
+		//the dependency wont be needed as they have to select from dropdown
+
+		//if($("input:radio[class='qualifying_exam']:checked").val()==="1" && $('.qualifying_details').val()==='' )
+		//{
+		//        alert_value+=alert_count+".) Please mention the Qualifying Exam Subjects\n\n";
+		//        alert_count++;
+		//        $('label[for=qualifying_details]').css({color:'red'});
+		//        flag="false";
+
+		//}
+		//else
+		//{
+		//        $('label[for=qualifying_details]').css({color:'#333333'});
+		//}
+
+
+		if($('.current_goal').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter Current goals\n\n";
+			alert_count++;
+			$('label[for=current_goal]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=current_goal]').css({color:'#333333'});
+		}
+
+		if($('.publication').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter Publications\n\n";
+			alert_count++;
+			$('label[for=publication]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=publication]').css({color:'#333333'});
+		}
+
+
+
+		if($('.presentation').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter Presentations\n\n";
+			alert_count++;
+			$('label[for=presentation]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=presentation]').css({color:'#333333'});
+		}
+
+
+
+		//$.each($('#coursegrade_table_body tr'),function(i,tr){
+		//        if($('.coursegrade'+i).find('.grade').val()!='' && $('.coursegrade'+i).find('.course').val()!='' && $('.coursegrade'+(i+1)).find('.grade').val()==='' && $('.coursegrade'+(i+1)).find//('.course').val()==='')
+		//        {
+		//                 alert_value+=alert_count+".) If grades are entered please remove the additional row added.\n\n";
+		//                alert_count++;
+		//                flag="false";
+		//     	}
+
+		//});
+
+
+
+
+		if($('.future_goal').val()==='')
+		{
+			alert_value+=alert_count+".) Please enter Future goals\n\n";
+			alert_count++;
+			$('label[for=future_goal]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=future_goal]').css({color:'#333333'});
+		}
+
+
+
+		//Check for the file being submitted.
+		if(document.getElementById("file").value == "")
+		{
+			alert_value+=alert_count+".) Please upload the iPOS\n\n";
+			alert_count++;
+			$('label[for=file]').css({color:'red'});
+			flag="false";
+		}
+		else
+		{
+			$('label[for=file]').css({color:'#333333'});
+		}
+
+
+		if(!$("input:checkbox[id='certify']").is(":checked"))
+		{
+			alert("Please certify your information for submitting the form");
+			flag="false";
+		}
+		else
+		{
+			$('label[for=certify]').css({color:'#333333'});
+		}
