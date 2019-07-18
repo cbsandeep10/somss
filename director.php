@@ -1,6 +1,6 @@
 <?php
-require_once '../CAS/config.php';
-require_once $phpcas_path . '../CAS/CAS.php';
+require_once '../../CAS/config.php';
+require_once $phpcas_path . 'CAS.php';
 
 phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
@@ -233,9 +233,9 @@ echo"
 <tr><th>Program Start Date</th><td>{$row['Program_start_date']}</td></tr>
 <tr><th>Semester In Progress</th><td>{$row['Semester_in_progress']}</td></tr>
 <tr><th>CGPA</th><td>{$row['CGPA']}</td></tr>
-<tr><th>Has the student completed Masters in passing?</th><td>$MSINPASSING</td></tr>
-<tr><th>Has the student graduated?</th><td>$GRAD_COMPLETED</td></tr>
-<tr><th>Has the student taken a Course during the current year?</th><td>$COURSE_TAKEN</td></tr>
+<tr><th>Have you completed Masters in passing?</th><td>$MSINPASSING</td></tr>
+<tr><th>Have you graduated?</th><td>$GRAD_COMPLETED</td></tr>
+<tr><th>Have you taken any courses during the current year?</th><td>$COURSE_TAKEN</td></tr>
 <tr><th>Reason for not taking a Course</th><td>{$row['No_Course_Reason']}</td></tr>
 <tr><th>Courses taken since last progress report with grades</th>
 <td>
@@ -280,8 +280,8 @@ echo"
 </table>
 </td>
 </tr>
-<tr><th>Has the Student Met the Chair during this academic year?</th><td>$STUDENT_ADVISOR</td></tr>
-<tr><th>Reason for not meeting the Chair</th><td>{$row['Not_Met_Reason']}</td><tr>
+<tr><th>Have you met your advisor during this academic year?</th><td>$STUDENT_ADVISOR</td></tr>
+<tr><th>Reason for not meeting the advisor</th><td>{$row['Not_Met_Reason']}</td><tr>
 <tr><th>Qualifying Exam Completed?</th><td>$QUALIFYING_EXAM</td></tr>
 
 <tr><th>Qualifying Exam Subjects</th>

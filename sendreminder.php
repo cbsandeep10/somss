@@ -73,7 +73,7 @@ $subject = '<<REMINDER>>Pending approval for student '.$row[1].'  '.$row[2];
 $message = 'Approval for PhD Student '.$row[1].' '.$row[2].' is still pending.
 
 Please visit the link below to sign the advisor form.
-https://mathesis.asu.edu/somss/login.php?ASU_ID='.$row[0].'&index='.$Keys[$i].'
+https://mathcms.asu.edu/somss/login.php?ASU_ID='.$row[0].'&index='.$Keys[$i].'
 
 Please use the password 1qazXsw2 to login to the page and to approve the form.
 Thank you!

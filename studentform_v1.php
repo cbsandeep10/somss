@@ -1,6 +1,6 @@
 <?php
-require_once '../CAS/config.php';
-require_once $phpcas_path . '../CAS/CAS.php';
+require_once '../../CAS/config.php';
+require_once $phpcas_path . 'CAS.php';
 
 phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
@@ -25,7 +25,10 @@ if($current_month<7)
 
 //Fetch records for the current year if they exist
 $tablename=$current_year.'_'.intval($current_year+1);
+$tablename="2018_2019";
 $sql = "SELECT * from ".$tablename." where ASU_ID='$ASU_ID'";
+//$sql = "SELECT * from archives where ASU_ID='$ASU_ID'";
+
 $retval = mysqli_query($conn,$sql);
 if(!$retval){
 echo "Error: ".$sql."<br>".mysqli_error($conn);
@@ -109,7 +112,8 @@ $Awards_PrevYears = array();
 $Future_Goals_PrevYears = array();
 while($count>0)
 {
-$tablename=$current_year.'_'.intval($current_year+1);
+$tablename=($current_year).'_'.intval($current_year+1);
+$tablename="2018_2019";
 $sql = "SELECT * from ".$tablename." where ASU_ID='$ASU_ID'";
 $retval = mysqli_query($conn,$sql);
 if (!$retval) {
@@ -174,7 +178,7 @@ $grade_list = array('A+','A','A-','B+','B','B-','C+','C','D','E','EN','I','NR','
 $comprehensive_exam_grade_list = array('Pass','Fail');
 
 //List of Advisor Positions
-$advisor_position_list = array('CHAIR','CO-CHAIR','MEMBER');
+$advisor_position_list = array('Advisor','Co-Advisor');
 
 /*
 //List of publication statuses
@@ -202,7 +206,7 @@ $test = "Test";
         <!-- -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	<!-- BOOTSTRAP TABLE CDN -->
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css'>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js'></script>
@@ -215,7 +219,10 @@ $test = "Test";
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/extensions/editable/bootstrap-table-editable.js"></script>
 	
 	<script>
-		var Asu_id = <?php echo $ASU_ID= $_GET['ID']; ?>;
+		// var Asu_id = <?php echo $ASU_ID= $_GET['ID']; ?>;
+		function displayHiddenCourseTable(){
+			$('#coursesTable').show();
+		}
 	</script>
 	
 	
@@ -318,12 +325,12 @@ a {text-align:center;}
 			                    <div id='MS_In_Passing_div'> 
 									<label class='control-label col-md-1'>Yes</label>
 									<div class='col-md-1'>
-										<input type='radio' name='MS_In_Passing' class='MS_In_Passing' onclick='MsInPassingChange()' id='MS_In_Passing_yes' value='1' <?php if($MS_In_Passing==='1')echo "checked='checked' "?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+										<input type='radio' name='MS_In_Passing' class='MS_In_Passing' onclick='MsInPassingChange()' id='MS_In_Passing_yes' value='1' <?php if($MS_In_Passing==='1')echo "checked='checked' "?>  >
 									</div>
 
 									<label class='control-label col-md-1'>No</label>
 									<div class='col-md-1'>
-										<input type='radio' name='MS_In_Passing' class='MS_In_Passing' onclick='MsInPassingChange()' id='MS_In_Passing_no' value='0' <?php if($MS_In_Passing==='0')echo "checked='checked' " ?> <?php if($_GET['valid'] == 1) echo "disabled"?>>
+										<input type='radio' name='MS_In_Passing' class='MS_In_Passing' onclick='MsInPassingChange()' id='MS_In_Passing_no' value='0' <?php if($MS_In_Passing==='0')echo "checked='checked' " ?> >
 									</div>
 									<div class="alert alert-danger alert-dismissible col-md-3" id="MsInPassingAlertDiv" role="alert" style="display:none">
 										<button type="button" class="alert-close close" ><span aria-hidden="true">&times;</span></button>
@@ -343,12 +350,12 @@ a {text-align:center;}
 									<div id='Graduation_Completed_div'> 
 									<label class='control-label col-md-1'>Yes</label>
 									<div class='col-md-1'>
-										<input type='radio' name='Graduation_Completed' class='Graduation_Completed' onclick='GraduationCompletedChange()' id='Graduation_Completed_yes' value='1' <?php if($Graduation_Completed==='1')echo "checked='checked' "?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+										<input type='radio' name='Graduation_Completed' class='Graduation_Completed' onclick='GraduationCompletedChange()' id='Graduation_Completed_yes' value='1' <?php if($Graduation_Completed==='1')echo "checked='checked' "?>  >
 									</div>
 
 									<label class='control-label col-md-1'>No</label>
 									<div class='col-md-1'>
-										<input type='radio' name='Graduation_Completed' class='Graduation_Completed' onclick='GraduationCompletedChange()' id='Graduation_Completed_no' value='0' <?php if($Graduation_Completed==='0')echo "checked='checked' " ?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+										<input type='radio' name='Graduation_Completed' class='Graduation_Completed' onclick='GraduationCompletedChange()' id='Graduation_Completed_no' value='0' <?php if($Graduation_Completed==='0')echo "checked='checked' " ?>  >
 									</div>
 									<div class="alert alert-danger alert-dismissible col-md-3" id="GraduationCompletedAlertDiv" role="alert" style="display:none">
 										<button type="button" class="alert-close close" ><span aria-hidden="true">&times;</span></button>
@@ -631,7 +638,7 @@ a {text-align:center;}
 					<!-- PREVIOUS YEARS -->
 					<div class="form-group">
 						
-						<label><font size="2"><i><u>Courses completed during the previous years</u></i></font></label>
+						<label><font size="2"><i><u>These are the courses you have taken previously</u></i></font></label>
 											
 						<div class="table-responsive">
 							<table id="coursesTable_PY">
@@ -671,7 +678,7 @@ a {text-align:center;}
 					<!-- COURSE FOR CURRENT AY -->
 					<div class="form-group">
 				
-						<label class='control-label col-md-4' for='course_currentAY'>Do you want to add Courses for the current year?<sup class='star'>*</sup></label>
+						<label class='control-label col-md-4' for='course_currentAY'>Did you take courses in the current year?<sup class='star'>*</sup></label>
 						<div id='course_currentAY_div'> 
 							<label class='control-label col-md-1'>Yes</label>
 							<div class='col-md-1'>
@@ -717,7 +724,7 @@ a {text-align:center;}
 							<table id="coursesTable">
 								<thead>
 								<tr>
-									<th data-field="selectBoxCourse"></th>
+									<th data-field="selectBoxCourse" style="display:none;"></th>
 									<th data-formatter="getRowIndex" style="width: 36px;"></th>
 									<th data-field="courseUniqueID" visible="false"></th>
 									<th data-field="course" data-title="Course<span class='glyphicon glyphicon-info-sign'></span>" data-title-tooltip="Courses taken since last progress with grades" data-editable="true"/>
@@ -729,7 +736,7 @@ a {text-align:center;}
 				
 						<!-- ADD / REMOVE COURSES -->
 						<div class='btn-group-horizontal'>
-							<button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addCourseModal"">Add Course</button>
+							<button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addCourseModal" onclick="displayHiddenCourseTable()">Add Course</button>
 							<button type='button' class='btn btn-primary' onclick="removeCourseRow()">Remove Course</button>
 						</div>
 				
@@ -771,13 +778,7 @@ a {text-align:center;}
 										</div>
 									</div>
 									
-									<!--
-									<div class="form-group">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-										<!-- <button type="button" class="btn btn-success" form="addCourseForm" data-dismiss="modal" onclick="addCourseRow()">Submit</button>
-										<input type="submit" class="btn btn-success" form="addCourseForm" onclick="addCourseRow()" value="OK">
-									</div>
-									-->
+								
 								</form>
 							  </div>
 							  <div class="modal-footer">
@@ -807,10 +808,10 @@ a {text-align:center;}
 									<tr>
 										<th data-formatter="getRowIndex_PS" style="width: 36px;"></th>
 										<th data-field="advisorUniqueID_PS" visible="false"></th>
-										<th data-field="advisorType_PS" data-title="Chair/Co-Chair/Member">
-										<th data-field="advisorFirstName_PS" data-title="First Name">
-										<th data-field="advisorLastName_PS" data-title="Last Name">
-										<th data-field="advisorEmailID_PS" data-title="E-mail ID">
+										<th data-field="advisorType_PS" data-title="Chair/Co-Chair/Member"></th>
+										<th data-field="advisorFirstName_PS" data-title="First Name"></th>
+										<th data-field="advisorLastName_PS" data-title="Last Name"></th>
+										<th data-field="advisorEmailID_PS" data-title="E-mail ID"></th>
 									</tr>
 								</thead>
 							</table>
@@ -820,11 +821,11 @@ a {text-align:center;}
 					
 					<div class="form-group">
 				
-							<label class='control-label col-md-4' for='advisory_committee'>Do you want to add members to your Advisory Committee?<sup class='star'>*</sup></label>
+							<label class='control-label col-md-4' for='advisory_committee'>Do you have an advisor?<sup class='star'>*</sup></label>
 							<div id='adv_committee'> 
 								<label class='control-label col-md-1'>Yes</label>
 								<div class='col-md-1'>
-									<input type='radio' name='advisory_committee' class='advisory_committee' onclick='AdvisoryCommitteeFormed()' id='advisory_committee_yes' value='1'>
+									<input type="radio"	name='advisory_committee' class='advisory_committee' onclick='AdvisoryCommitteeFormed()' id='advisory_committee_yes' value='1'>
 								</div>
 				
 								<label class='control-label col-md-1'>No</label>
@@ -867,10 +868,10 @@ a {text-align:center;}
 										<th data-field="selectBoxAdvisor">
 										<th data-formatter="getRowIndex" style="width: 36px;"></th>
 										<th data-field="advisorUniqueID" visible="false"></th>
-										<th data-field="advisorType" data-title="Chair/Co-Chair/Member" data-editable="true">
-										<th data-field="advisorFirstName" data-title="First Name" data-editable="true">
-										<th data-field="advisorLastName" data-title="Last Name" data-editable="true">
-										<th data-field="advisorEmailID" data-title="E-mail ID">
+										<th data-field="advisorType" data-title="Chair/Co-Chair/Member" data-editable="true"></th>
+										<th data-field="advisorFirstName" data-title="First Name" data-editable="true"></th>
+										<th data-field="advisorLastName" data-title="Last Name" data-editable="true"></th>
+										<th data-field="advisorEmailID" data-title="E-mail ID"></th>
 									</tr>
 									</thead>
 								</table>
@@ -878,8 +879,8 @@ a {text-align:center;}
 					
 							<!-- ADD /REMOVE ADVISORS -->
 							<div class='btn-group-horizontal'>
-								<button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addAdvisorModal">Add Advisor Members</button>
-								<button type='button' class='btn btn-primary' onclick="removeAdvisorRow()">Remove Advisor members</button>
+								<button type='button' class='btn btn-primary' data-toggle="modal" data-target="#addAdvisorModal">Add Advisors</button>
+								<button type='button' class='btn btn-primary' onclick="removeAdvisorRow()">Remove Advisors</button>
 							</div>
 					
 							<!-- ADD ADVISOR MODAL -->
@@ -968,8 +969,7 @@ a {text-align:center;}
 					<!-- STUDENT MET CHAIR -->
 					<div class='form-group'>
 						<div class="row">
-							<label class='control-label col-md-4' for='advisor'>Has the student met the Chair for the current academic year? If not,
-							give reasons below<sup class='star'>*</sup></label>
+							<label class='control-label col-md-4' for='advisor'> Have you met your advisor during this academic year?<sup class='star'>*</sup></label>
 							<div id='advisor'>
 								<label class='control-label col-md-1'>Yes</label>
 								<div class='col-md-1'>
@@ -989,7 +989,7 @@ a {text-align:center;}
 						<!-- STUDENT NOT MET CHAIR REASON -->
 						<div class="row">
 							<div id="NotMetChairReason_div" style="display:none">
-								<label class='control-label col-md-4' for='chair_notmet_reason'>Reason for not meeting the Chair<sup class='star'>*</sup></label>
+								<label class='control-label col-md-4' for='chair_notmet_reason'>Reason for not meeting the advisor<sup class='star'>*</sup></label>
 								<div class='col-md-8' for='chair_notmet_reason'>
 									<textarea class='form-control' name='chair_notmet_reason' id='chair_notmet_reason' <?php if($_GET['valid']==1) echo "style='background-color:#FCF5D8;'"; ?> required><?php if($MetChair==='0') echo $NotMetReason; ?></textarea>
 								</div>
@@ -1020,7 +1020,7 @@ a {text-align:center;}
 					
 					<!-- Qualifying Exams Completed during previous years -->
 					<div class="form-group">
-						<label><font size='2'><i><u>Qualifying Exams completed during previous years</u></i></font></label>
+						<label><font size='2'><i><u>These are the Qualifying Exams passed previously</u></i></font></label>
 						<table id="qualifying_subject_table_PY">
 							<thead>
 							<tr>
@@ -1038,7 +1038,7 @@ a {text-align:center;}
 					<!-- PREV SUBMISSION FOR CURRENT YEAR -->
 					<?php if($QualExamComp==='1')
 					echo '<div class="form-group">
-						<label><font size="2"><i><u>Qualifying Exams completed during current year</u></i></font></label>
+						<label><font size="2"><i><u>These are the Qualifying Exams you have passes previously</u></i></font></label>
 						<div class="table-responsive" id="qualifying_exam_subjects_div_PS">	
 					
 							<table id="qualifying_subject_table_PS">
@@ -1057,7 +1057,7 @@ a {text-align:center;}
 					
 					<div class="form-group">
 						<div class="row">
-							<label class='control-label col-md-4' for='qualifying_exam_completed'>Do you want to add any Completed Qualifying Exams for the current year?<sup class='star'>*</sup></label>
+							<label class='control-label col-md-4' for='qualifying_exam_completed'>Did you take any Qualifying Exams in the current year?<sup class='star'>*</sup></label>
 							<div id='qualifying_exam_completed'>
 								<label class='control-label col-md-1'>Yes</label>
 								<div class='col-md-1'>
@@ -1163,7 +1163,7 @@ a {text-align:center;}
 					
 					<!-- Written Comprehensive Exams Completed during previous years -->
 					<div class="form-group">
-						<label><font size='2'><i><u>Written Comprehensive Exams completed during previous years</u></i></font></label>
+						<label><font size='2'><i><u>These are the Written Comprehensive Exams you have passed previously</u></i></font></label>
 						<table id="comprehensiveExamTable_PY">
 							<thead>
 							<tr>
@@ -1197,7 +1197,7 @@ a {text-align:center;}
 					
 					<div class="form-group">
 						<div class="row">
-							<label class='control-label col-md-4' for='comprehensive_exam'>Do you want to add any Written Comprehensive Exams for the current year?<sup class='star'>*</sup></label>
+							<label class='control-label col-md-4' for='comprehensive_exam'>Did you take any Written Comprehensive Exams in the current year?<sup class='star'>*</sup></label>
 							<div id='adv_committee'> 
 							<label class='control-label col-md-1'>Yes</label>
 							<div class='col-md-1'>
@@ -1306,16 +1306,16 @@ a {text-align:center;}
 					<!-- DISSERTATION PROSPECTUS -->
 					<div class='form-group'  id='dissertation_prosectus_div'>
 						<div class="row">
-							<label class='control-label col-md-4' for='dissertation_prosectus'>Dissertation prospectus completed?<sup class='star'>*</sup></label>
+							<label class='control-label col-md-4' for='dissertation_prosectus'>Have you completed Dissertation Prospectus?<sup class='star'>*</sup></label>
 
 							<label class='control-label col-md-1'>Yes</label>
 							<div class='col-md-1'>
-								<input type='radio' name='dissertation_prosectus' id='dissertation_prosectus' onclick="dissertationProspectus()" value='1' <?php if($DissertationProspectus==='1')echo "checked='checked' " ?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+								<input type='radio' name='dissertation_prosectus' id='dissertation_prosectus' onclick="dissertationProspectus()" value='1' <?php if($DissertationProspectus==='1')echo "checked='checked' " ?>  >
 							</div>
 
 							<label class='control-label col-md-1'>No</label>
 							<div class='col-md-1'>
-								<input type='radio' name='dissertation_prosectus' id='dissertation_prosectus' onclick="dissertationProspectus()" value='0' <?php if($DissertationProspectus==='0')echo "checked='checked' " ?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+								<input type='radio' name='dissertation_prosectus' id='dissertation_prosectus' onclick="dissertationProspectus()" value='0' <?php if($DissertationProspectus==='0')echo "checked='checked' " ?>  >
 							</div>
 							<div class="alert alert-danger alert-dismissible col-md-3" id="dissertationAlertDiv" role="alert" style="display:none">
 									<button type="button" class="alert-close close" ><span aria-hidden="true">&times;</span></button>
@@ -1326,16 +1326,16 @@ a {text-align:center;}
 					
 						<!-- COLLOQUIUM ATTENDED -->
 						<div class="row">
-							<label class='control-label col-md-4' for='colloquium'>Colloquium/Distinguished Lecture Series Attended?<sup class='star'>*</sup></label>
+							<label class='control-label col-md-4' for='colloquium'>Have you attended any Colloquium/Distinguished Lecture Series?<sup class='star'>*</sup></label>
 
 							<label class='control-label col-md-1'>Yes</label>
 							<div class='col-md-1'>
-								<input type='radio' name='colloquium' id='colloquium_yes' class='colloquium' onclick='Check_Colloquium_Attended()' value='1' <?php if($Colloquium_Attended==='1')echo "checked='checked' " ?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+								<input type='radio' name='colloquium' id='colloquium_yes' class='colloquium' onclick='Check_Colloquium_Attended()' value='1' <?php if($Colloquium_Attended==='1')echo "checked='checked' " ?> >
 							</div>
 						
 							<label class='control-label col-md-1'>No</label>
 							<div class='col-md-1'>
-								<input type='radio' name='colloquium' id='colloquium_no' class='colloquium' onclick='Check_Colloquium_Attended()' value='0' <?php if($Colloquium_Attended==='0')echo "checked='checked' " ?> <?php if($_GET['valid'] == 1) echo "disabled"?> >
+								<input type='radio' name='colloquium' id='colloquium_no' class='colloquium' onclick='Check_Colloquium_Attended()' value='0' <?php if($Colloquium_Attended==='0')echo "checked='checked' " ?>  >
 							</div>
 							<div class="alert alert-danger alert-dismissible col-md-3" id="colloquiumAlertDiv" role="alert" style="display:none">
 									<button type="button" class="alert-close close" ><span aria-hidden="true">&times;</span></button>
@@ -1453,7 +1453,7 @@ a {text-align:center;}
 					<!-- PUBLICATIONS -->
 					<!-- Previous Years -->
 					<div class="form-group">
-						<label><font size='2'><i><u>Publications during previous years</u></i></font></label>
+						<label><font size='2'><i><u>These are your previous publications</u></i></font></label>
 						<table id="publicationsTable_PY">
 							<thead>
 								<tr>
@@ -1484,7 +1484,7 @@ a {text-align:center;}
 					<!-- Current Year -->
 					
 					<div class="row">
-						<label class='control-label col-md-4' for='pub_currentAY'>Do you want to add Publications for the current year?<sup class='star'>*</sup></label>
+						<label class='control-label col-md-4' for='pub_currentAY'>Have you submitted/published in the current year?<sup class='star'>*</sup></label>
 
 						<label class='control-label col-md-1'>Yes</label>
 						<div class='col-md-1'>
@@ -1560,11 +1560,11 @@ a {text-align:center;}
 											</select>
 											<div id="publication_DOI_div" style="display: none;">
 												<label for="publication_DOI">DOI</label>
-												<input type="text" class="form-control" id="publication_DOI" placeholder="Enter DOI" required />
+												<input type="text" class="form-control" id="publication_DOI" placeholder="Enter DOI" />
 											</div>
 											<div id="publication_URL_div" style="display:none">
 												<label for="publication_URL">URL</label>
-												<input type="url" class="form-control" id="publication_URL" placeholder="URL" required /> 
+												<input type="url" class="form-control" id="publication_URL" placeholder="URL" /> 
 											</div>
 											
 										</div>	
@@ -1608,7 +1608,7 @@ a {text-align:center;}
 					<!-- PRESENTATIONS -->
 					<!-- Previous Year -->
 					<div class="form-group">
-						<label><font size='2'><i><u>Presentations during previous years</u></i></font></label>
+						<label><font size='2'><i><u>These are your previous presentations</u></i></font></label>
 						<table id="presentationsTable_PY">
 							<thead>
 								<tr>
@@ -1639,7 +1639,7 @@ a {text-align:center;}
 					<!-- Current Year -->
 					
 					<div class="row">
-						<label class='control-label col-md-4' for='pres_currentAY'>Do you want to add Presentations for the current year?<sup class='star'>*</sup></label>
+						<label class='control-label col-md-4' for='pres_currentAY'>Did you present any work during the current year?<sup class='star'>*</sup></label>
 
 						<label class='control-label col-md-1'>Yes</label>
 						<div class='col-md-1'>
@@ -1745,7 +1745,7 @@ a {text-align:center;}
 					<!-- AWARDS -->
 					<!-- Previous Years -->
 					<div class="form">
-						<label><font size='2'><i><u>Awards listed during previous years</u></i></font></label>
+						<label><font size='2'><i><u>These are the Awards you received previously</u></i></font></label>
 						<table id="awardsTable_PY">
 							<thead>
 								<tr>
@@ -1776,7 +1776,7 @@ a {text-align:center;}
 					<!-- Current Year -->
 					
 					<div class="row">
-						<label class='control-label col-md-4' for='award_currentAY'>Do you want to add Awards for the current year?<sup class='star'>*</sup></label>
+						<label class='control-label col-md-4' for='award_currentAY'>Did you receive any awards in the current year?<sup class='star'>*</sup></label>
 
 						<label class='control-label col-md-1'>Yes</label>
 						<div class='col-md-1'>
@@ -1964,7 +1964,7 @@ a {text-align:center;}
 				<div class="panel-heading">Section C | END</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label class='control-label' for='comments'>Please mention if you wish to add anymore to this form</label><i>(optional)</i>
+						<label class='control-label' for='comments'>Please add further comments</label><i>(optional)</i>
       					<textarea class='form-control' name='comments' id='comments'><?php if($_GET['valid'] == 1) echo $Comments?></textarea>
 					</div>
 					<div class="form-group">

@@ -160,11 +160,11 @@ if($MAIN_ADVISOR_FLAG=='1')
 {
 	//change this
         //$to = "halsmith@asu.edu";
-        $to = "tharangd95@gmail.com";	//Enter Director's emailID
+        $to = "dieter@asu.edu";	//Enter Director's emailID
         $subject = 'Please Approve Form for student '.$FIRST_NAME.'  '.$SECOND_NAME;
         $message = "The Advisory Committee has approved the form for the student. The Form needs Directors Signature.
         Please check and approve the form.
-        https://mathesis.asu.edu/somss/director_login.php?ASU_ID=".$ASU_ID."
+        https://mathcms.asu.edu/somss/director_login.php?ASU_ID=".$ASU_ID."
 
         The password for the approval from director is 2wsxZaq1";
         $headers = 'From: somss.advising_noreply@asu.edu';

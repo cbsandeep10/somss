@@ -1,6 +1,6 @@
 <?php
-require_once '../CAS/config.php';
-require_once $phpcas_path . '../CAS/CAS.php';
+require_once '../../CAS/config.php';
+require_once $phpcas_path . 'CAS.php';
 
 phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
@@ -12,6 +12,7 @@ phpCAS::handleLogoutRequests();
 <title>Director Home</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -20,6 +21,7 @@ phpCAS::handleLogoutRequests();
   <script src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="jqmeter.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -68,7 +70,7 @@ var index = $("input[type=submit][clicked=true]").val();
 				success: function(data){
 				//alert(Director_Comments);
 				alert("The progress report for the student has been approved!");
-				window.location.href="https://mathesis.asu.edu/somss/director_home.php?key=2wsxZaq1";
+				window.location.href="https://mathcms.asu.edu/somss/director_home.php?key=2wsxZaq1";
 				}
 			});
 			
@@ -168,9 +170,11 @@ if($current_month < 7){
 	$table_name = intval($current_year-1).'_'.$current_year; 
 }
 else{
-	$table_name = $current_year.'_'.intval($current_year  + 1); 
+	// commented by Aneesh - this wont work anymore
+	// $table_name = $current_year.'_'.intval($current_year  + 1); 
 }
-            $sql = "SELECT ASU_ID,First_Name,Second_Name,Adivisory_Committee,Advisor_Firstname,Approved,Main_Advisor_Flag,Advisor_Secondname,Advisor_Mail, Submission_date, Director_Comments, Director_Signature from ".$table_name." order by Second_Name";
+	$table_name = "2018_2019";
+            $sql = "SELECT ASU_ID,First_Name,Second_Name,Adivisory_Committee,Advisor_Firstname,Approved,Main_Advisor_Flag,Advisor_Secondname,Advisor_Mail, Submission_date, Director_Comments, Director_Signature from ".$table_name." order by Submission_date desc";
             // where Admin_Advisor like '%$ADVISOR%'";
 
     $retval = mysqli_query($conn,$sql);
@@ -318,6 +322,54 @@ else{
 ?>
 </form>
 </body> 
+
+<script>
+setTimeout(() => {
+console.log('updating ui')
+	let rows = Array.prototype.slice.call(document.getElementsByClassName('CSSTableGenerator')[0].getElementsByTagName('table')[0].getElementsByTagName('tr'))
+
+	//document.getElementsByClassName('CSSTableGenerator').innerHTML = '';
+	let op = '<form method="POST"><h3><center> PhD Student Reports - Fall 2019</center></h3><div id="tabs"><ul><li><a href="#2018">2018</a></li><li><a href="#2019">2019</a></li></ul>'
+	let t1 = '<div class="CSSTableGenerator" id="2018"><table>'
+	t1 += '<tr>'
+	t1 += rows[0].innerHTML
+	t1 += '</tr>'
+	let t2 = '<div class="CSSTableGenerator" id="2019"><table>'
+	t2 += '<tr>'
+	t2 += rows[0].innerHTML
+	t2 += '</tr>'
+
+	rows.map(e => {
+		if(e.getElementsByTagName('td')[4].innerText.split('-')[0] === "2018") {
+			t1 += '<tr>'
+			t1 += e.innerHTML
+			t1 += '</tr>'
+		}
+		else if(e.getElementsByTagName('td')[4].innerText.split('-')[0] === "2019") {
+			t2 += '<tr>'
+			t2 += e.innerHTML
+			t2 += '</tr>'
+		}
+	})
+	t1 += "</table></div>"
+	t2 += "</table></div>"
+	op += t1
+	op += t2
+	op += "</div></form>"
+
+	console.log(op)
+	document.body.innerHTML = op
+	$(function() {
+		$('#tabs').tabs();
+		console.log('done');
+	});
+
+}, 750)
+
+
+</script>
+
+
 
 </html>
 

@@ -1,7 +1,6 @@
-
 	
 	function ViewForm(){
-		//window.location.href="https://mathesis.asu.edu/somss/director.php?ASU_ID="+Asu_id;
+		//window.location.href="https://mathcms.asu.edu/somss/director.php?ASU_ID="+Asu_id;
 		console.log("viewform");
 	}
 	

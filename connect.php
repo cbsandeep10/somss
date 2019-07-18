@@ -5,7 +5,7 @@
 
         $servername = "localhost";
         $username = "root";
-        $password = "ra!nbow";
+        $password = "Ra!nb0w";
         $db_name = "SOMSS";
 // Create connection
         $conn = mysqli_connect($servername, $username, $password, $db_name);

@@ -6,7 +6,7 @@ function getRowIndex(value, row, index){
 function onAcademicYearChange(){
 
 	var academic_year = $("#academic_year_select").val();
-	window.location="https://mathesis.asu.edu/student_submission.php?ID=" + Asu_id + "&valid=1" + "&AcademicYear=" + academic_year;
+	window.location="https://mathcms.asu.edu/student_submission.php?ID=" + Asu_id + "&valid=1" + "&AcademicYear=" + academic_year;
 }
 
 //Template for Courses table

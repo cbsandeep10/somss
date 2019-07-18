@@ -1,4 +1,4 @@
-<
+
 <?php
 /*PDF
 define('FPDF_FONTPATH','./font/');
@@ -78,10 +78,10 @@ if($DIRECTOR_COMMENTS == 'DirectApproval'){
 	$headers = 'From: somss.advising@asu.edu';
 }
 else if($DIRECTOR_COMMENTS == 'StudentContacted'){
-	$subject = "PhD Progress Form Not Approved"; 
-	$message = "Your PhD Progress form has not been approved. \r\nDirector's comments: " . $DIRECTOR_MSG . "\r\nStudent's ASU ID: " . $ASU_ID;
+	$subject = "PhD Progress Form"; 
+	$message = "Director's comments: " . $DIRECTOR_MSG . "\r\nStudent's ASU ID: " . $ASU_ID;
 	$headers = 'From: somss.advising@asu.edu' . "\r\n" .
-			   'Cc: tharangd95@gmail.com';
+			   'Cc: dieter@asu.edu';
 }
 
 /*PDF

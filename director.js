@@ -143,7 +143,7 @@ $.ajax({
     success: function(data){
 		//alert(Director_Comments);
 		alert("Your comments have been sent to the student. Thank you.");
-		window.location.href="https://mathesis.asu.edu/somss/director_home.php?key=2wsxZaq1";
+		window.location.href="https://mathcms.asu.edu/somss/director_home.php?key=2wsxZaq1";
 	}
 });
 

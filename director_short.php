@@ -1,6 +1,6 @@
 <?php
-require_once '../CAS/config.php';
-require_once $phpcas_path . '../CAS/CAS.php';
+require_once '../../CAS/config.php';
+require_once $phpcas_path . 'CAS.php';
 
 phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
@@ -34,7 +34,7 @@ phpCAS::handleLogoutRequests();
 	</script>
 	<script>
 		function ViewForm(){
-			window.location.href="https://mathesis.asu.edu/somss/director.php?ASU_ID="+Asu_id+"&key=2wsxZaq1";
+			window.location.href="https://mathcms.asu.edu/somss/director.php?ASU_ID="+Asu_id+"&key=2wsxZaq1";
 			console.log("viewform");
 		}
 	
@@ -53,7 +53,7 @@ phpCAS::handleLogoutRequests();
 				success: function(data){
 				//alert(Director_Comments);
 				alert("The progress report for the student has been approved!");
-				window.location.href="https://mathesis.asu.edu/somss/director_home.php?key=2wsxZaq1";
+				window.location.href="https://mathcms.asu.edu/somss/director_home.php?key=2wsxZaq1";
 				}
 			});
 			

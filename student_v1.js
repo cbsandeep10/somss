@@ -374,6 +374,7 @@ function AddCourseCurrentAY(){
 	if($("#course_currentAY_yes").is(':checked')){
 		$("#NoCourseReason_parentDiv").hide();
 		$("#courses_currentAY").show();
+		$('#coursesTable').hide();
 	}
 	else if($("#course_currentAY_no").is(':checked')){
 		//$("#advisory_committee_no").prop('checked',true);
@@ -387,7 +388,7 @@ function AddCourseCurrentAY(){
 		$("#courses_currentAY").hide();
 		$("#courseCurrentAYAlertDiv").hide();
 	}
-
+	setCourseTableTemplate();
 }
 
 //Add row to Courses table
@@ -1905,7 +1906,7 @@ function addPublicationRow(){
 		alert_flag = true;
 	}
 	
-	var date_regex = /(?:doi[\s.:]{0,2})?(10[.][^/]+\/[^\s”]+)./ ;
+/*	var date_regex = /(?:doi[\s.:]{0,2})?(10[.][^/]+\/[^\s”]+)./ ;
 	console.log(publication_status + " : " + publication_DOI);
 	if(publication_status == "Published" && publication_DOI == ""){
 		alert_text += "Please enter a DOI <br>";
@@ -1919,7 +1920,7 @@ function addPublicationRow(){
 	if(publication_URL == ""){
 		alert_text += "Please enter a URL <br>";
 		alert_flag = true;
-	}
+	} */
 	
 	if(alert_flag){
 		$("#addPublicationAlertDiv").show();
@@ -3551,5 +3552,5 @@ $(function(){
 function redirect(){
 	//var current_academic_year= academic_year_fall+"_"+academic_year_spring;
 	//window.location="student_demo.php?ID="+asu_id+"&AcademicYear="+current_academic_year;
-	window.location.href="https://mathesis.asu.edu/somss";
+	window.location.href="https://mathcms.asu.edu/somss";
 }

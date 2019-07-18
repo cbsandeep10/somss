@@ -1,8 +1,9 @@
-
+<?php error_reporting(-1); ?>
+<?php ini_set('display_errors',true);?>
 <?php
 
-require_once '../CAS/config.php';
-require_once $phpcas_path . '../CAS/CAS.php';
+require_once '../../CAS/config.php';
+require_once $phpcas_path . 'CAS.php';
 
 phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 phpCAS::setNoCasServerValidation();
@@ -96,7 +97,9 @@ if($current_month<7)
 
 //Fetch records for the current year if they exist
 $tablename=$current_year.'_'.intval($current_year+1);
+$tablename="2018_2019";
 $sql = "SELECT * from ".$tablename." where ASU_ID=".$ID;
+	//$sql = "SELECT * from archives where ASU_ID=".$ID;
   	//$sql = "SELECT ASU_ID from SOMSS.somss_test where ASU_ID='$ID'";
 	echo"<script>console.log(\"$sql\")</script>";
   	$retval = mysqli_query($conn,$sql);

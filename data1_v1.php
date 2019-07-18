@@ -765,10 +765,10 @@ mail($to, $subject, $message, $headers);
 if($ADVISORY_COMMITTEE=='0')
 { // if no advisory committte then mail should go directly to director. See code from advisor_data.php last lines.
 
-	$to = "tharangd95@gmail.com";
+	$to = "dieter@asu.edu";
         $subject = 'Please Approve Form for student '.$FIRST_NAME.'  '.$SECOND_NAME;
         $message = 'PhD student '.$FIRST_NAME.' '.$SECOND_NAME.' submitted the PhD Progress report form but the student does not have an advising committee yet. Please review and approve the form and kindly meet with the student to form an advising committee.
-https://mathesis.asu.edu/somss/director_login.php?ASU_ID='.$ASU_ID.'
+https://mathcms.asu.edu/somss/director_login.php?ASU_ID='.$ASU_ID.'
         The password for the approval from director is 2wsxZaq1';
         $headers = 'From: somss.advising@asu.edu';
 
@@ -789,7 +789,7 @@ else if($ADVISORY_COMMITTEE=='1')
 			$message = 'PhD Student '.$FIRST_NAME.' '.$SECOND_NAME.' submitted the PhD progress Report Form and chose you as the '.$ADVISORPOSITIONLIST[$i].' of his committee.
 
 			Please visit the below link to sign the advisor form.
-			https://mathesis.asu.edu/somss/login.php?ASU_ID='.$ASU_ID.'&index='.$i.'
+			https://mathcms.asu.edu/somss/login.php?ASU_ID='.$ASU_ID.'&index='.$i.'
 
 			Please use this as password 1qazXsw2 to login to the page and to approve the form.
 			Thank you!

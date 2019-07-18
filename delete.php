@@ -28,7 +28,7 @@ $id = $_GET["delete_btn"];
     </script>
     ";
   }
-  header("Location: https://mathesis.asu.edu/somss/testuser_home.php?key=2wsxZaq1"); /* Redirect browser */
+  header("Location: https://mathcms.asu.edu/somss/testuser_home.php?key=2wsxZaq1"); /* Redirect browser */
   exit();
 ?>
 
