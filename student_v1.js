@@ -478,6 +478,7 @@ function AdvisoryCommitteeFormed(){
 			$('#NoAdvCommReason_parentDiv').show();
 	}
 
+	setAdvisorTableTemplate();
 }
 
 //Template for Advisors table
@@ -1108,7 +1109,7 @@ function qualifyingExamTable(){
 		$("#qualifying_exam_subjects_div").hide();
 		$("#qualExamTableAlertDiv").hide();
 	}
-	
+	setQualifyingExamTableTemplate();
 }
 
 
@@ -1200,6 +1201,7 @@ function ComprehensiveExamCompleted(){
 		$("#comprehensive_exam_div").hide();
 		$("#compExamTableAlertDiv").hide();
 	}
+	setComprehensiveExamTableTemplate();
 }
 
 
@@ -1834,7 +1836,7 @@ function PublicationCurrentAY(){
 		$('#add_publication_div').hide();
 		$("#publicationsTableAlertDiv").hide();
 	}
-
+	setPublicationsTableTemplate();
 }
 
 /*
@@ -2163,7 +2165,7 @@ function PresentationCurrentAY(){
 		$('#add_presentation_div').hide();
 		$("#presentationsTableAlertDiv").hide();
 	}
-
+	setPresentationsTableTemplate();
 }
 
 /*
@@ -2472,7 +2474,7 @@ function AwardCurrentAY(){
 		$('#add_award_div').hide();
 		$("#awardsTableAlertDiv").hide();
 	}
-
+	setAwardsTableTemplate();
 }
 
 //Add row to Presentations Table

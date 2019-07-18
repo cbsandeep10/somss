@@ -1061,7 +1061,7 @@ a {text-align:center;}
 							<div id='qualifying_exam_completed'>
 								<label class='control-label col-md-1'>Yes</label>
 								<div class='col-md-1'>
-									<input type='radio' name='qualifying_exam_completed' id='exam_yes' class='qualifying_exam_completed' onclick='qualifyingExamTable()' value='1'>
+									<input type='radio' name='qualifying_exam_completed' id='exam_yes' class='qualifying_exam_completed' onclick='qualifyingExamTable();resetQualifyingExamTable(<?php echo json_encode($Degree_program) ?>);' value='1'>
 								</div>
 							
 								<label class='control-label col-md-1'>No</label>
